@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.egg-info/
+.pytest_cache/
+
+# Downloaded / generated data (re-created by tutorials; datasets keep their own licences)
+data/public/
+data/synthetic/
+outputs/
+
+# Unpublished manuscript material (kept private until submission)
+docs/chapter/
+studies/

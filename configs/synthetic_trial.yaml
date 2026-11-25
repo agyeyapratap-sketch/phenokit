@@ -1,0 +1,49 @@
+# phenokit pipeline configuration for the synthetic multi-platform trial.
+# Paths are relative to this file. Copy and edit for a real trial: only file names,
+# platform/sensor folder names and thresholds should need to change.
+trial_id: SYN-WA-2026
+date: "2026-08-20"
+trial_root: ../data/synthetic/SYN-WA-2026
+plot_layout: plot_layout.csv
+ground_truth: field_measurements.csv
+ground_truth_traits: [biomass_meas_t_ha, height_meas_m, spad, n_meas_pct]
+outlier_z: 6.0
+
+sensors:
+  hyperspectral:
+    platform: uav
+    sensor: vnir
+    file: vnir_cube.hdr
+    panels: panels_certified.csv   # certified reflectance + panel footprints (map coords)
+    panel_buffer_m: 0.25
+    snr_min: 20
+    saturation: 4095
+  multispectral:
+    platform: uav
+    sensor: ms5
+    file: ms_reflectance.hdr
+  rgb:
+    platform: uav
+    sensor: rgb
+    file: rgb_ortho.png
+    frames_dir: frames
+  thermal:
+    platform: uav
+    sensor: thermal
+    file: thermal_brightness_c.hdr
+    references: references.json
+    emissivity: 0.98
+  lidar:
+    platform: uav
+    sensor: lidar
+    file: lidar.las
+    min_density: 100
+    dtm_res: 1.0
+  ground:
+    platform: ground
+    sensor: ndvi_gnss
+    file: ndvi_track.csv
+  handheld:
+    platform: handheld
+    sensor: spectroradiometer
+    file: canopy_spectra.csv
